@@ -5,10 +5,10 @@
 <body>
 	<c:if test="${not empty empresa}">
 			Empresa ${ empresa }, Cadastrada com sucesso!
-		</c:if>
+	</c:if>
 
 	<c:if test="${empty empresa}">
 			Não foi possível cadastrar empresa!
-		</c:if>
+	</c:if>
 </body>
 </html>
