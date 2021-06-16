@@ -1,7 +1,6 @@
 package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,20 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/lista-empresas")
-public class ListaEmpresasServlet extends HttpServlet {
+@WebServlet("/mostra-empresa")
+public class MostraEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String paramId = request.getParameter("id");
+		Integer id = Integer.valueOf(paramId);
 
+		
 		Banco banco = new Banco();
-		List<Empresa> lista = banco.getEmpresas();
-
-		RequestDispatcher rd = request.getRequestDispatcher("/lista-empresas.jsp");
-		request.setAttribute("empresas", lista);
-
+		Empresa empresa = banco.buscarEmpresaPorId(id);
+		
+		request.setAttribute("empresa", empresa);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/form-altera-empresa.jsp");
 		rd.forward(request, response);
-
 	}
+
 }
