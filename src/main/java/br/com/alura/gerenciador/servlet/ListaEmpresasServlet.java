@@ -19,9 +19,10 @@ public class ListaEmpresasServlet extends HttpServlet {
 
 		Banco banco = new Banco();
 		List<Empresa> lista = banco.getEmpresas();
-
-		RequestDispatcher rd = request.getRequestDispatcher("/lista-empresas.jsp");
+		
 		request.setAttribute("empresas", lista);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/lista-empresas.jsp");		
 
 		rd.forward(request, response);
 

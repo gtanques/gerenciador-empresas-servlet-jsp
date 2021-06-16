@@ -13,14 +13,10 @@
 </head>
 <body>
 
-	<c:if test="${not empty empresa}">
+	<c:if test="${not empty empresa}">		
 		Empresa ${ empresa }, Cadastrada com sucesso!
-	</c:if>
-	<c:if test="${empty empresa}">
-		Não foi possível cadastrar empresa!
-	</c:if>
-
-	<br />
+	</c:if>	
+	
 	Lista de empresas:
 	<br />
 
